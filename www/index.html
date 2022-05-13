@@ -4,71 +4,67 @@
     <meta charset="utf -8">
     <title>Exercici Intro JavaScript</title>
     <script type="text/javascript">
-        let users = {pepe : {password : "123", email : "pepe@gmail.com"}, lola : {password : "456", email : "lola@gmail.com"}};
+        let users = {pepe : {username : "pepe", password : "123", email : "pepe@gmail.com"}, lola : {username : "lola", password : "456", email : "lola@gmail.com"}};
 
         function fer_login(){
             console.log("Funcion Funciona JIJIJIJA");
             let userElement = document.getElementById("userl");
             let passElement = document.getElementById("passl");
 
-            if (users[userElement.value] == passElement.value){
+            if (users[userElement.value].password == passElement.value){
                 alert("Login valido " + userElement.value);
             }
             else{
                 alert("Login mal fet");
             }
         }
+        
+        function fer_register(){
+            console.log("Funcion Funciona JIJIJIJA");
+            let userElement = document.getElementById("userl");
+            let passElement = document.getElementById("passl");
+            let passElement2 = document.getElementById("passr2");
+            let mailElement = document.getElementById("mail");
 
-        function registra(){
-            console.log("Funciona el Registro!");
-            let userElement = document.getElementById("usernameR");
-            let passElement = document.getElementById("passwordR");
-            let pass2Element = document.getElementById("passwordR2");
-            let mailElement = document.getElementByID("mail");
-            
-            if (passElement.value != pass2Element.value){
-                alert("Password and the second Password aren't the same.");
+            if (userElement != "" || passElement != "" || mailElement != ""){
+               
+            let newUser = {username:userElement.value ,password:passElement.value, email:mailElement.value}
+            users[userElement.value] = newUser;
+            alert("Registre fet " + userElement.value);
+
             }
-
             else{
-                for (let i in users){
-                    if (userElement.value == i){
-                        alert("User already registed");
-                    }
-                    
-                    
-                }
+                alert("Registre mal fet");
             }
-                
-           
-
-
         }
+
     </script>    
 </head>
 
 <body>
-    <form style="background-color: blueviolet;">
-        <h1>Login</h1>
-        <label for="username">Username:</label><br>
-        <input type="text" id="userl" name="username"><br>
-        <label for="Pass">Password:</label><br>
-        <input type="password" id="passl" name="passwordl"><br><br> 
-        <input type="button" name = "loginButton" value="Login" onclick="fer_login()"><br>
-    </form>
+    <div id = "cos">
+        <form style="background-color: blueviolet;">
+            <h1>Login</h1>
+            <label for="username">Username:</label><br>
+            <input type="text" id="userl" name="username"><br>
+            <label for="Pass">Password:</label><br>
+            <input type="password" id="passl" name="passwordl"><br>
+            <input type="button" name = "loginButton" value="Login" onclick="fer_login()"><br>
+        </form>
+    </div>
 
-    <form style="background-color: gray;">
-        <h1>Register</h1>
-        <label for="usernameR">Username:</label><br>
-        <input type="text" id="usernameR" name="userR"><br>
-        <label for="mail">Email:</label><br>
-        <input type="text" id="mail" name="email"><br>
-        <label for="passR">Password:</label><br>
-        <input type="password" id="passwordR" name="passwordR"><br>
-        <label for="passR">Repeat your Password:</label><br>
-        <input type="password" id="passwordR2" name="passwordR2"><br>
-        <input type="button" name = "RButton" value="Register" onclick="registra()">
-    </form>
+    <div id = "cos">
+        <form style="background-color: pink;">
+            <h1>Register</h1>
+            <label for="username">Username:</label><br>
+            <input type="text" id="userR" name="username"><br>
+            <label for="Pass">Password:</label><br>
+            <input type="password" id="passr" name="passwordr"><br>
+            <label for="mail">Email</label><br>
+            <input type="text" id="mail" name="emailUser"><br>
+            <input type="button" name = "registerButton" value="Register" onclick="fer_register()"><br>
+        </form>
+    </div>
 </body>
 
 </html>
